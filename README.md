@@ -24,6 +24,121 @@ CI/CD Pipelines: Automated pipelines for testing and deploying code changes.
 
 Database Design
 
+This project uses a relational database to manage users, properties, bookings, reviews, and payments. The structure is designed to ensure data integrity, easy querying, and scalability.
+
+Entities & Key Fields
+1. Users
+user_id (Primary Key)
+
+name
+
+email (unique)
+
+password_hash
+
+created_at
+
+Relationships:
+
+A user can list multiple properties.
+
+A user can make multiple bookings.
+
+A user can leave multiple reviews.
+
+2. Properties
+property_id (Primary Key)
+
+owner_id (Foreign Key → Users.user_id)
+
+title
+
+description
+
+location
+
+price_per_night
+
+Relationships:
+
+A property belongs to one user (owner).
+
+A property can have many bookings.
+
+A property can have many reviews.
+
+3. Bookings
+booking_id (Primary Key)
+
+property_id (Foreign Key → Properties.property_id)
+
+user_id (Foreign Key → Users.user_id)
+
+check_in_date
+
+check_out_date
+
+status (e.g., confirmed, cancelled)
+
+Relationships:
+
+A booking belongs to a single property.
+
+A booking is made by a single user.
+
+A booking may have one associated payment.
+
+4. Reviews
+review_id (Primary Key)
+
+property_id (Foreign Key → Properties.property_id)
+
+user_id (Foreign Key → Users.user_id)
+
+rating (1–5)
+
+comment
+
+created_at
+
+Relationships:
+
+A review belongs to a specific property.
+
+A review is written by a single user.
+
+5. Payments
+payment_id (Primary Key)
+
+booking_id (Foreign Key → Bookings.booking_id)
+
+amount
+
+payment_method
+
+status (e.g., paid, pending)
+
+payment_date
+
+Relationships:
+
+A payment is linked to one booking.
+
+A payment confirms the booking’s financial transaction.
+
+Entity Relationship Summary
+Users ↔ Properties: One-to-Many (a user can own many properties).
+
+Users ↔ Bookings: One-to-Many (a user can make many bookings).
+
+Properties ↔ Bookings: One-to-Many (a property can be booked many times).
+
+Properties ↔ Reviews: One-to-Many (a property can have many reviews).
+
+Bookings ↔ Payments: One-to-One (each booking has one payment record).
+
+Features Breakdown
+
 1. User Authentication
 Endpoints: /users/, /users/{user_id}/
 Features: Register new users, authenticate, and manage user profiles.
