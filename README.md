@@ -137,7 +137,7 @@ Properties ↔ Reviews: One-to-Many (a property can have many reviews).
 
 Bookings ↔ Payments: One-to-One (each booking has one payment record).
 
-Features Breakdown
+Feature Breakdown
 
 1. User Authentication
 Endpoints: /users/, /users/{user_id}/
@@ -155,4 +155,51 @@ Features: Handle payment transactions related to bookings.
 Endpoints: /reviews/, /reviews/{review_id}/
 Features: Post and manage reviews for properties.
 
+API Security
+Security is at the core of this Airbnb Clone backend to protect users, properties, bookings, and transactions. The following measures will be implemented to ensure safe and reliable operations:
 
+Key Security Measures
+Authentication
+
+Secure login and signup using JWT (JSON Web Tokens) or OAuth 2.0.
+
+Ensures only verified users can access the system.
+
+Authorization
+
+Role-based access control (RBAC) to determine what each user can do (e.g., host vs. guest).
+
+Prevents unauthorized actions like editing another user’s property.
+
+Rate Limiting
+
+Restricts the number of requests per user/IP in a given timeframe.
+
+Reduces the risk of DDoS attacks and API abuse.
+
+Data Encryption
+
+All data in transit is protected via HTTPS/TLS.
+
+Sensitive data such as passwords are hashed and salted before storage.
+
+Input Validation & Sanitization
+
+Prevents injection attacks (e.g., SQL Injection, XSS).
+
+Ensures only valid, expected data is processed.
+
+Logging & Monitoring
+
+Tracks unusual activity and potential security breaches in real time.
+
+Enables quick incident response.
+
+Why Security is Crucial
+Protecting User Data 🛡️ — Usernames, emails, and personal details must remain confidential to maintain trust.
+
+Securing Payments 💳 — Payment data must be handled safely to prevent theft, fraud, or unauthorized transactions.
+
+Ensuring Platform Integrity 🏠 — Strong access controls keep the platform fair and reliable for all users.
+
+Preventing Service Disruption ⚡ — Rate limiting and monitoring defend against denial-of-service attacks, ensuring smooth operation.
